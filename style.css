@@ -15,7 +15,7 @@ body {
     height: 500px;
 }
 
-/* Center Icon */
+/* Core System - Centered Properly */
 .center-icon {
     position: absolute;
     top: 50%;
@@ -29,29 +29,31 @@ body {
     width: 100%;
 }
 
-/* Orbit Rings */
+/* Orbit Rings (Now Fully Centered) */
 .orbit {
     position: absolute;
     border-radius: 50%;
     border: 2px solid rgba(200, 200, 200, 0.5); /* Light Grey Orbit Lines */
 }
 
-/* Inner Orbit */
+/* Inner Orbit (Smaller Circle) */
 .inner-orbit {
-    width: 70%;
-    height: 70%;
-    top: 15%;
-    left: 15%;
+    width: 280px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: rotate 10s linear infinite;
 }
 
-/* Outer Orbit */
+/* Outer Orbit (Larger Circle) */
 .outer-orbit {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    animation: rotate 15s linear infinite; /* Slightly slower than inner orbit */
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 15s linear infinite;
 }
 
 /* Orbiting Logos */
@@ -74,15 +76,15 @@ body {
     height: auto;
 }
 
-/* Positioning for Inner Orbit */
-.google-calendar { top: 10%; left: 50%; transform: translateX(-50%); }
-.outlook { top: 70%; left: 20%; transform: translateX(-50%); }
-.gmail { top: 70%; left: 80%; transform: translateX(-50%); }
+/* Correct Positions for Inner Orbit */
+.google-calendar { top: 0%; left: 50%; transform: translate(-50%, 0); } /* Top */
+.outlook { top: 50%; left: 0%; transform: translate(0, -50%); } /* Left */
+.gmail { top: 50%; left: 100%; transform: translate(-100%, -50%); } /* Right */
 
-/* Positioning for Outer Orbit */
-.zapier { top: 5%; left: 50%; transform: translateX(-50%); }
-.slack { top: 90%; left: 30%; transform: translateX(-50%); }
-.calendly { top: 90%; left: 70%; transform: translateX(-50%); }
+/* Correct Positions for Outer Orbit */
+.zapier { top: 0%; left: 50%; transform: translate(-50%, 0); } /* Top */
+.slack { top: 100%; left: 25%; transform: translate(-50%, -100%); } /* Bottom Left */
+.calendly { top: 100%; left: 75%; transform: translate(-50%, -100%); } /* Bottom Right */
 
 /* Orbit Rotation Animation */
 @keyframes rotate {
