@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Orbit animation initialized.");
+  console.log("Orbiting icons are spinning!");
 });
