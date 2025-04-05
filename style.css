@@ -1,12 +1,14 @@
+/* General Page Layout */
 body {
   margin: 0;
   height: 100vh;
-  background: #ffffff;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Orbit Container */
 .orbit-container {
   position: relative;
   width: 500px;
@@ -27,51 +29,55 @@ body {
   width: 100%;
 }
 
-/* Orbit Rings (visual only) */
-.orbit-ring {
+/* Orbit Rings */
+.orbit-line {
   position: absolute;
-  border: 2px solid rgba(180, 180, 180, 0.4);
+  border: 2px solid rgba(180, 180, 180, 0.4); /* Light Grey Orbit Lines */
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.inner-ring {
+.inner-orbit {
   width: 250px;
   height: 250px;
 }
-.outer-ring {
+.outer-orbit {
   width: 400px;
   height: 400px;
 }
 
-/* Orbiting Icons */
+/* Orbiting Logos */
 .orbiter {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 0;
+  height: 0;
   transform-origin: center;
-  animation: orbit 10s linear infinite;
 }
 
 .orbiter img {
   width: 60px;
   height: 60px;
-  background-color: white;
+  background: white;
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Inner Orbit Radius */
+/* Orbit Distance */
 .orbiter.inner {
-  animation-duration: 10s;
+  animation: orbit-inner 10s linear infinite;
+  --radius: 125px;
 }
 .orbiter.outer {
-  animation-duration: 15s;
+  animation: orbit-outer 15s linear infinite;
+  --radius: 200px;
 }
 
-@keyframes orbit {
+/* Orbit Animations */
+@keyframes orbit-inner {
   from {
     transform: rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1 * var(--angle)));
   }
@@ -80,10 +86,11 @@ body {
   }
 }
 
-/* Radius assignment for orbit distance */
-.orbiter.inner {
-  --radius: 125px;
-}
-.orbiter.outer {
-  --radius: 200px;
+@keyframes orbit-outer {
+  from {
+    transform: rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1 * var(--angle)));
+  }
+  to {
+    transform: rotate(calc(360deg + var(--angle))) translateX(var(--radius)) rotate(calc(-360deg - var(--angle)));
+  }
 }
