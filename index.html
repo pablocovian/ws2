@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rotating Integrations</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Integrations</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="orbit-container">
-    <!-- Center Icon -->
-    <div class="center-icon">
-      <img src="assets/center-icon.png" alt="Core System" />
+    <div class="orbit-container">
+        <div class="center-icon">
+            <img src="assets/center-icon.png" alt="Core System">
+        </div>
+
+        <!-- Inner Orbit -->
+        <div class="orbit inner-orbit">
+            <div class="orbiting-logo google-calendar"><img src="assets/google-calendar.png" alt="Google Calendar"></div>
+            <div class="orbiting-logo outlook"><img src="assets/outlook.png" alt="Outlook"></div>
+            <div class="orbiting-logo gmail"><img src="assets/gmail.png" alt="Gmail"></div>
+        </div>
+
+        <!-- Outer Orbit -->
+        <div class="orbit outer-orbit">
+            <div class="orbiting-logo zapier"><img src="assets/zapier.png" alt="Zapier"></div>
+            <div class="orbiting-logo slack"><img src="assets/slack.png" alt="Slack"></div>
+            <div class="orbiting-logo calendly"><img src="assets/calendly.png" alt="Calendly"></div>
+        </div>
     </div>
 
-    <!-- Inner Orbit -->
-    <div class="orbit-line inner-orbit"></div>
-    <div class="orbiter inner" style="--angle: 0deg;"><img src="assets/gmail.png" alt="Gmail" /></div>
-    <div class="orbiter inner" style="--angle: 120deg;"><img src="assets/google-calendar.png" alt="Google Calendar" /></div>
-    <div class="orbiter inner" style="--angle: 240deg;"><img src="assets/outlook.png" alt="Outlook" /></div>
-
-    <!-- Outer Orbit -->
-    <div class="orbit-line outer-orbit"></div>
-    <div class="orbiter outer" style="--angle: 0deg;"><img src="assets/zapier.png" alt="Zapier" /></div>
-    <div class="orbiter outer" style="--angle: 120deg;"><img src="assets/slack.png" alt="Slack" /></div>
-    <div class="orbiter outer" style="--angle: 240deg;"><img src="assets/calendly.png" alt="Calendly" /></div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
