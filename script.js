@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Orbits initialized!");
+    console.log("Orbit animation running on GitHub Pages!");
 });
