@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Rotation active.");
+    console.log("Orbit animation running on GitHub Pages!");
 });
