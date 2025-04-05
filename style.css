@@ -1,122 +1,110 @@
+/* General Styles */
 body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0;
 }
 
+/* Orbit Container */
 .orbit-container {
-  position: relative;
-  width: 500px;
-  height: 500px;
+    position: relative;
+    width: 500px;
+    height: 500px;
 }
 
+/* Center Icon */
 .center-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 .center-icon img {
-  width: 100%;
-  height: auto;
+    width: 100%;
 }
 
 /* Orbit Rings */
-.orbit-ring {
-  position: absolute;
-  border: 2px solid rgba(200, 200, 200, 0.5);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
+.orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(200, 200, 200, 0.5); /* Light Grey Orbit Lines */
 }
 
-.inner-ring {
-  width: 280px;
-  height: 280px;
+/* Inner Orbit */
+.inner-orbit {
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    animation: rotate 10s linear infinite;
 }
 
-.outer-ring {
-  width: 400px;
-  height: 400px;
-}
-
-/* Orbit Rotation Wrappers */
-.orbit-rotation {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
-}
-
-.inner-rotation {
-  animation: rotate 10s linear infinite;
-}
-
-.outer-rotation {
-  animation: rotate 20s linear infinite;
+/* Outer Orbit */
+.outer-orbit {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: rotate 15s linear infinite;
 }
 
 /* Orbiting Logos */
 .orbiting-logo {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background-color: white;
-  border-radius: 50%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: center;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Inner Orbit Positions */
-.inner-rotation .orbiting-logo:nth-child(1) {
-  transform: rotate(0deg) translateX(140px) rotate(0deg);
-}
-.inner-rotation .orbiting-logo:nth-child(2) {
-  transform: rotate(120deg) translateX(140px) rotate(-120deg);
-}
-.inner-rotation .orbiting-logo:nth-child(3) {
-  transform: rotate(240deg) translateX(140px) rotate(-240deg);
-}
-
-/* Outer Orbit Positions */
-.outer-rotation .orbiting-logo:nth-child(1) {
-  transform: rotate(0deg) translateX(200px) rotate(0deg);
-}
-.outer-rotation .orbiting-logo:nth-child(2) {
-  transform: rotate(120deg) translateX(200px) rotate(-120deg);
-}
-.outer-rotation .orbiting-logo:nth-child(3) {
-  transform: rotate(240deg) translateX(200px) rotate(-240deg);
-}
-
-/* Images */
 .orbiting-logo img {
-  width: 60%;
-  height: auto;
+    width: 60%;
+    height: auto;
 }
 
-/* Orbit Animations */
+/* Keep Logos Upright */
+.rotating-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-origin: center;
+}
+
+/* Position logos at even angles */
+.inner-orbit .rotating-wrapper:nth-child(1) {
+    transform: rotate(0deg) translateX(35%);
+}
+.inner-orbit .rotating-wrapper:nth-child(2) {
+    transform: rotate(120deg) translateX(35%);
+}
+.inner-orbit .rotating-wrapper:nth-child(3) {
+    transform: rotate(240deg) translateX(35%);
+}
+
+.outer-orbit .rotating-wrapper:nth-child(1) {
+    transform: rotate(0deg) translateX(50%);
+}
+.outer-orbit .rotating-wrapper:nth-child(2) {
+    transform: rotate(120deg) translateX(50%);
+}
+.outer-orbit .rotating-wrapper:nth-child(3) {
+    transform: rotate(240deg) translateX(50%);
+}
+
+/* Rotation Animations */
 @keyframes rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
