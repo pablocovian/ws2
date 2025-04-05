@@ -1,14 +1,13 @@
 body {
   margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.system-wrapper {
+.orbit-container {
   position: relative;
   width: 500px;
   height: 500px;
@@ -28,70 +27,63 @@ body {
   width: 100%;
 }
 
-/* Orbit Rings */
-.orbit-line {
+/* Orbit Rings (visual only) */
+.orbit-ring {
   position: absolute;
-  border-radius: 50%;
   border: 2px solid rgba(180, 180, 180, 0.4);
+  border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.inner-orbit {
+.inner-ring {
   width: 250px;
   height: 250px;
 }
-.outer-orbit {
+.outer-ring {
   width: 400px;
   height: 400px;
 }
 
 /* Orbiting Icons */
-.planet-orbit {
+.orbiter {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
   transform-origin: center;
+  animation: orbit 10s linear infinite;
 }
 
-.planet {
+.orbiter img {
   width: 60px;
   height: 60px;
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
 }
 
-.planet img {
-  width: 60%;
-  height: auto;
+/* Inner Orbit Radius */
+.orbiter.inner {
+  animation-duration: 10s;
+}
+.orbiter.outer {
+  animation-duration: 15s;
 }
 
-/* Specific Orbit Types */
-.inner-orbit-orbit {
-  animation: spin-inner 10s linear infinite;
-}
-.outer-orbit-orbit {
-  animation: spin-outer 15s linear infinite;
-}
-
-/* Position each icon at an angle */
-.angle-0 { transform: rotate(0deg) translateX(125px) rotate(0deg); }
-.angle-120 { transform: rotate(120deg) translateX(125px) rotate(-120deg); }
-.angle-240 { transform: rotate(240deg) translateX(125px) rotate(-240deg); }
-
-/* Orbit animation */
-@keyframes spin-inner {
-  0% { transform: rotate(0deg) translateX(125px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(125px) rotate(-360deg); }
+@keyframes orbit {
+  from {
+    transform: rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1 * var(--angle)));
+  }
+  to {
+    transform: rotate(calc(360deg + var(--angle))) translateX(var(--radius)) rotate(calc(-360deg - var(--angle)));
+  }
 }
 
-@keyframes spin-outer {
-  0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+/* Radius assignment for orbit distance */
+.orbiter.inner {
+  --radius: 125px;
+}
+.orbiter.outer {
+  --radius: 200px;
 }
