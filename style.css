@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     display: flex;
     justify-content: center;
@@ -8,14 +7,13 @@ body {
     margin: 0;
 }
 
-/* Orbit Container */
 .orbit-container {
     position: relative;
     width: 500px;
     height: 500px;
 }
 
-/* Center Icon */
+/* Center icon fixed */
 .center-icon {
     position: absolute;
     top: 50%;
@@ -23,75 +21,103 @@ body {
     width: 80px;
     height: 80px;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 .center-icon img {
     width: 100%;
+    height: 100%;
 }
 
-/* Orbit Rings */
+/* Shared orbit style */
 .orbit {
     position: absolute;
+    border: 2px solid rgba(200, 200, 200, 0.5);
     border-radius: 50%;
-    border: 2px solid rgba(200, 200, 200, 0.5); /* Light Grey Orbit Lines */
 }
 
-/* Inner Orbit */
+/* Inner orbit (Google Calendar, Outlook, Gmail) */
 .inner-orbit {
-    width: 70%;
-    height: 70%;
-    top: 15%;
-    left: 15%;
-    animation: rotate 10s linear infinite;
+    width: 280px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 12s linear infinite;
+    z-index: 1;
 }
 
-/* Outer Orbit */
+/* Outer orbit (Zapier, Slack, Calendly) */
 .outer-orbit {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    animation: rotate 15s linear infinite; /* Slightly slower than inner orbit */
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 18s linear infinite;
+    z-index: 1;
 }
 
-/* Orbiting Logos */
+/* Orbiting logos container: positions children */
 .orbiting-logo {
     position: absolute;
+    top: 50%;
+    left: 50%;
     width: 60px;
     height: 60px;
-    background: white;
+    background-color: white;
     border-radius: 50%;
+    transform-origin: center center;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    animation: stay-upright 10s linear infinite;
 }
 
-/* Logo Images */
+/* Logo image sizing */
 .orbiting-logo img {
     width: 60%;
     height: auto;
 }
 
-/* Positioning for Inner Orbit */
-.google-calendar { top: 10%; left: 50%; transform: translateX(-50%); }
-.outlook { top: 70%; left: 20%; transform: translateX(-50%); }
-.gmail { top: 70%; left: 80%; transform: translateX(-50%); }
-
-/* Positioning for Outer Orbit */
-.zapier { top: 5%; left: 50%; transform: translateX(-50%); }
-.slack { top: 90%; left: 30%; transform: translateX(-50%); }
-.calendly { top: 90%; left: 70%; transform: translateX(-50%); }
-
-/* Orbit Rotation Animation */
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+/* Icon stays upright */
+.orbiting-logo-inner,
+.orbiting-logo-outer {
+    animation: stay-upright 12s linear infinite;
 }
 
-/* Keep Logos Upright */
+/* Inner orbit icons */
+.google-calendar {
+    transform: rotate(0deg) translate(140px) rotate(0deg);
+}
+.outlook {
+    transform: rotate(120deg) translate(140px) rotate(-120deg);
+}
+.gmail {
+    transform: rotate(240deg) translate(140px) rotate(-240deg);
+}
+
+/* Outer orbit icons */
+.zapier {
+    transform: rotate(0deg) translate(200px) rotate(0deg);
+}
+.slack {
+    transform: rotate(120deg) translate(200px) rotate(-120deg);
+}
+.calendly {
+    transform: rotate(240deg) translate(200px) rotate(-240deg);
+}
+
+/* Rotation for orbits */
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Keep icon facing upright */
 @keyframes stay-upright {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(-360deg); }
+    100% {
+        transform: rotate(-360deg);
+    }
 }
